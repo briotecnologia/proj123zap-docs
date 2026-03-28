@@ -1,0 +1,257 @@
+[
+  {
+    "name": "proj123zap-docs",
+    "team": "Plataforma",
+    "owners": [
+      "Vitor Braz"
+    ],
+    "status": "revisao",
+    "note": "Base de documentação organizacional"
+  },
+  {
+    "name": "proj123zap-sites-clients",
+    "team": "Web Sites",
+    "owners": [
+      "Vitor Braz"
+    ],
+    "status": "ativo",
+    "note": "Monorepo de sites de clientes em produção"
+  },
+  {
+    "name": "proj123zap-campaign-create",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-integration-events",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-listings-orchestrator",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "123zap-frontend",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "123zap-list-providers",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-templates",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-core",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "argos",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "helena-integration-hub",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "123zap-connector-mk",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "123zap_ispintegrator",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "cf-start-subscription",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "123zap-infra-ia",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "outline-brio",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "aws-nuage-migration",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "bookstack-swarm",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "123Desk-painel",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-erp-atlas",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "aws-nuage",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "123zap-connector-ixc",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "MIL-VM150-123ZAP-TRAEFIK",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "heroui-aws",
+    "team": "Frontend",
+    "owners": [
+      "Não definido"
+    ],
+    "status": "revisao",
+    "note": "Avaliar se mantém ou consolida"
+  },
+  {
+    "name": "123-AWS",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-channels",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-login",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-profiles",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-infra-interface",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "proj123zap-dashboard",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "MIL-VM150-123ZAP-DOCKER-01",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "123zap-infra",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
+    "name": "123zap-heroui-test",
+    "team": "Frontend",
+    "owners": [
+      "Não definido"
+    ],
+    "status": "legado",
+    "note": "Projeto de teste sem continuidade recente"
+  },
+  {
+    "name": "heroui-amplify",
+    "team": "Frontend",
+    "owners": [
+      "Não definido"
+    ],
+    "status": "legado",
+    "note": "Experimento antigo"
+  },
+  {
+    "name": "briotecnologia",
+    "team": "Não definido",
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  }
+]

@@ -9,13 +9,14 @@
       --bg: #0b1220;
       --bg-2: #111a2d;
       --panel: #1a253b;
-      --panel-2: #22304b;
       --text: #e6eefc;
       --muted: #9ab0d3;
       --line: #304361;
       --brand: #42c7ff;
       --ok: #20c997;
       --warn: #ffb020;
+      --danger: #ff6b6b;
+      --review: #8b5cf6;
     }
 
     * { box-sizing: border-box; }
@@ -124,6 +125,12 @@
       letter-spacing: -0.01em;
     }
 
+    .section-desc {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -162,6 +169,12 @@
       gap: 10px;
     }
 
+    .controls-4 {
+      display: grid;
+      grid-template-columns: 1.3fr repeat(4, minmax(130px, 1fr));
+      gap: 10px;
+    }
+
     .input,
     .select {
       width: 100%;
@@ -183,7 +196,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 860px;
+      min-width: 900px;
     }
 
     thead th {
@@ -222,6 +235,7 @@
       border: 1px solid var(--line);
       color: var(--muted);
       background: #16243d;
+      white-space: nowrap;
     }
 
     .badge.ok {
@@ -236,11 +250,29 @@
       background: rgba(255, 176, 32, 0.12);
     }
 
+    .badge.review {
+      border-color: rgba(139, 92, 246, 0.45);
+      color: #d7c0ff;
+      background: rgba(139, 92, 246, 0.12);
+    }
+
+    .badge.legacy {
+      border-color: rgba(255, 107, 107, 0.45);
+      color: #ffc3c3;
+      background: rgba(255, 107, 107, 0.12);
+    }
+
     .muted { color: var(--muted); }
 
     .list {
       margin: 0;
       padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .small-note {
+      margin-top: 10px;
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
@@ -252,8 +284,8 @@
       text-align: center;
     }
 
-    @media (max-width: 860px) {
-      .controls { grid-template-columns: 1fr; }
+    @media (max-width: 980px) {
+      .controls, .controls-4 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -263,10 +295,10 @@
       <div class="kicker">Documentação Organizacional</div>
       <h1>Proj123Zap Docs</h1>
       <p class="subtitle">
-        Catálogo vivo dos repositórios da organização <strong>briotecnologia</strong>, com foco inicial em inventário, status e atividade recente.
+        Catálogo vivo dos repositórios da organização <strong>briotecnologia</strong>, com foco em inventário, governança por equipe e estados de projeto.
       </p>
       <div class="meta">
-        <span class="pill">Fonte: GitHub API</span>
+        <span class="pill">Fonte: GitHub API + Governança manual versionada</span>
         <span class="pill">Escopo inicial: repositórios atuais</span>
         <span class="pill">Atualização: <span id="snapshot-date">-</span></span>
       </div>
@@ -277,6 +309,7 @@
     <div class="topnav-inner">
       <a href="#visao-geral">Visão Geral</a>
       <a href="#repositorios">Repositórios</a>
+      <a href="#equipes">Equipes & Responsáveis</a>
       <a href="#acessos">Acessos</a>
     </div>
   </nav>
@@ -298,8 +331,8 @@
           <div class="value" id="m-public">0</div>
         </article>
         <article class="metric">
-          <div class="label">Arquivados</div>
-          <div class="value" id="m-archived">0</div>
+          <div class="label">Em revisão</div>
+          <div class="value" id="m-review">0</div>
         </article>
       </div>
     </section>
@@ -336,13 +369,58 @@
                 <th>Repositório</th>
                 <th>Descrição</th>
                 <th>Tipo</th>
-                <th>Status</th>
+                <th>Status técnico</th>
                 <th>Último Push</th>
               </tr>
             </thead>
             <tbody id="repos-body"></tbody>
           </table>
         </div>
+      </div>
+    </section>
+
+    <section id="equipes">
+      <h2 class="section-title">Equipes, Responsáveis e Estado</h2>
+      <p class="section-desc">Esta tabela é controlada pelo arquivo versionado <code>docs/data/repo-governance.json</code>. O time pode editar por PR.</p>
+      <div class="panel">
+        <div class="controls-4">
+          <input id="gq" class="input" placeholder="Buscar por repositório, equipe ou responsável" />
+          <select id="gstatus" class="select">
+            <option value="all">Estado: todos</option>
+            <option value="ativo">Ativo</option>
+            <option value="revisao">Revisão</option>
+            <option value="legado">Legado</option>
+            <option value="desabilitado">Desabilitado</option>
+          </select>
+          <select id="gteam" class="select">
+            <option value="all">Equipe: todas</option>
+          </select>
+          <select id="gowner" class="select">
+            <option value="all">Responsável: todos</option>
+          </select>
+          <select id="gtype" class="select">
+            <option value="all">Tipo: todos</option>
+            <option value="private">Privado</option>
+            <option value="public">Público</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Repositório</th>
+                <th>Equipe</th>
+                <th>Responsável</th>
+                <th>Estado</th>
+                <th>Observação</th>
+              </tr>
+            </thead>
+            <tbody id="gov-body"></tbody>
+          </table>
+        </div>
+
+        <p class="small-note">Fluxo recomendado: alterar <code>docs/data/repo-governance.json</code> e abrir PR. Assim o histórico de mudanças fica auditável.</p>
       </div>
     </section>
 
@@ -361,7 +439,7 @@
   </main>
 
   <footer class="footer">
-    proj123zap-docs · inventário inicial dos repositórios da organização briotecnologia
+    proj123zap-docs · inventário e governança dos repositórios da organização briotecnologia
   </footer>
 
   <script>
@@ -386,15 +464,31 @@
       return "other";
     };
 
+    const stateBadge = (state) => {
+      const val = (state || "ativo").toLowerCase();
+      if (val === "revisao") return '<span class="badge review">revisão</span>';
+      if (val === "legado") return '<span class="badge legacy">legado</span>';
+      if (val === "desabilitado") return '<span class="badge warn">desabilitado</span>';
+      return '<span class="badge ok">ativo</span>';
+    };
+
     const reposBody = document.getElementById("repos-body");
+    const govBody = document.getElementById("gov-body");
+
     const q = document.getElementById("q");
     const type = document.getElementById("type");
     const prefix = document.getElementById("prefix");
     const fresh = document.getElementById("fresh");
 
+    const gq = document.getElementById("gq");
+    const gstatus = document.getElementById("gstatus");
+    const gteam = document.getElementById("gteam");
+    const gowner = document.getElementById("gowner");
+    const gtype = document.getElementById("gtype");
+
     let data = [];
 
-    const render = () => {
+    const renderRepos = () => {
       const term = q.value.trim().toLowerCase();
       const filtered = data
         .filter((r) => {
@@ -418,7 +512,7 @@
       reposBody.innerHTML = filtered
         .map((r) => {
           const age = daysSince(r.pushedAt);
-          const status = r.isArchived
+          const statusTech = r.isArchived
             ? '<span class="badge warn">arquivado</span>'
             : age > 180
               ? '<span class="badge warn">possível sem sequência</span>'
@@ -433,7 +527,7 @@
               <td><a class="repo-link" href="${r.url}" target="_blank" rel="noreferrer">${r.name}</a></td>
               <td>${r.description ? r.description : '<span class="muted">sem descrição</span>'}</td>
               <td>${kind}</td>
-              <td>${status}</td>
+              <td>${statusTech}</td>
               <td title="${r.pushedAt}">${fmtDate(r.pushedAt)} <span class="muted">(${age}d)</span></td>
             </tr>
           `;
@@ -441,34 +535,92 @@
         .join("");
     };
 
+    const renderGovernance = () => {
+      const term = gq.value.trim().toLowerCase();
+
+      const rows = data
+        .filter((r) => {
+          const text = `${r.name} ${r.team || ""} ${(r.owners || []).join(" ")} ${r.status || ""} ${r.note || ""}`.toLowerCase();
+          if (term && !text.includes(term)) return false;
+          if (gstatus.value !== "all" && (r.status || "ativo") !== gstatus.value) return false;
+          if (gteam.value !== "all" && (r.team || "Não definido") !== gteam.value) return false;
+          if (gowner.value !== "all" && !(r.owners || []).includes(gowner.value)) return false;
+          if (gtype.value === "private" && !r.isPrivate) return false;
+          if (gtype.value === "public" && r.isPrivate) return false;
+          return true;
+        })
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+      govBody.innerHTML = rows
+        .map((r) => `
+          <tr>
+            <td><a class="repo-link" href="${r.url}" target="_blank" rel="noreferrer">${r.name}</a></td>
+            <td>${r.team || '<span class="muted">Não definido</span>'}</td>
+            <td>${(r.owners && r.owners.length) ? r.owners.join(", ") : '<span class="muted">Não definido</span>'}</td>
+            <td>${stateBadge(r.status)}</td>
+            <td>${r.note ? r.note : '<span class="muted">-</span>'}</td>
+          </tr>
+        `)
+        .join("");
+    };
+
     const updateMetrics = () => {
       const total = data.length;
       const privateCount = data.filter((r) => r.isPrivate).length;
       const publicCount = data.filter((r) => !r.isPrivate).length;
-      const archivedCount = data.filter((r) => r.isArchived).length;
+      const reviewCount = data.filter((r) => (r.status || "ativo") === "revisao").length;
 
       document.getElementById("m-total").textContent = total;
       document.getElementById("m-private").textContent = privateCount;
       document.getElementById("m-public").textContent = publicCount;
-      document.getElementById("m-archived").textContent = archivedCount;
+      document.getElementById("m-review").textContent = reviewCount;
     };
 
-    fetch("./data/repos.json")
-      .then((res) => res.json())
-      .then((rows) => {
-        data = rows;
-        const latest = rows
-          .map((r) => r.pushedAt)
-          .filter(Boolean)
-          .sort()
-          .reverse()[0];
-        document.getElementById("snapshot-date").textContent = latest ? fmtDate(latest) : "-";
+    const fillGovernanceFilters = () => {
+      const teams = [...new Set(data.map((r) => r.team || "Não definido"))].sort();
+      const owners = [...new Set(data.flatMap((r) => r.owners || []))].sort();
 
-        updateMetrics();
-        render();
+      gteam.innerHTML = ['<option value="all">Equipe: todas</option>']
+        .concat(teams.map((t) => `<option value="${t}">${t}</option>`))
+        .join("");
+
+      gowner.innerHTML = ['<option value="all">Responsável: todos</option>']
+        .concat(owners.map((o) => `<option value="${o}">${o}</option>`))
+        .join("");
+    };
+
+    Promise.all([
+      fetch("./data/repos.json").then((r) => r.json()),
+      fetch("./data/repo-governance.json").then((r) => r.json()).catch(() => []),
+    ]).then(([repos, gov]) => {
+      const govMap = new Map(gov.map((x) => [x.name, x]));
+
+      data = repos.map((repo) => {
+        const g = govMap.get(repo.name) || {};
+        return {
+          ...repo,
+          team: g.team || "Não definido",
+          owners: Array.isArray(g.owners) ? g.owners : [],
+          status: g.status || "ativo",
+          note: g.note || "",
+        };
       });
 
-    [q, type, prefix, fresh].forEach((el) => el.addEventListener("input", render));
+      const latest = repos
+        .map((r) => r.pushedAt)
+        .filter(Boolean)
+        .sort()
+        .reverse()[0];
+      document.getElementById("snapshot-date").textContent = latest ? fmtDate(latest) : "-";
+
+      updateMetrics();
+      fillGovernanceFilters();
+      renderRepos();
+      renderGovernance();
+    });
+
+    [q, type, prefix, fresh].forEach((el) => el.addEventListener("input", renderRepos));
+    [gq, gstatus, gteam, gowner, gtype].forEach((el) => el.addEventListener("input", renderGovernance));
   </script>
 </body>
 </html>
