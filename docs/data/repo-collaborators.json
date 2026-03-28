@@ -13,6 +13,19 @@
     ]
   },
   {
+    "name": "argos",
+    "members": [
+      {
+        "name": "matiasbreunig",
+        "avatar": "https://avatars.githubusercontent.com/u/5097829?v=4"
+      },
+      {
+        "name": "VitorBraz",
+        "avatar": "https://avatars.githubusercontent.com/u/60633603?v=4"
+      }
+    ]
+  },
+  {
     "name": "proj123zap-sites-clients",
     "members": [
       {
@@ -69,7 +82,7 @@
     ]
   },
   {
-    "name": "123zap-frontend",
+    "name": "proj123zap-frontend",
     "members": [
       {
         "name": "matiasbreunig",
@@ -137,19 +150,6 @@
       {
         "name": "joberthtavares",
         "avatar": "https://avatars.githubusercontent.com/u/233845689?v=4"
-      }
-    ]
-  },
-  {
-    "name": "argos",
-    "members": [
-      {
-        "name": "matiasbreunig",
-        "avatar": "https://avatars.githubusercontent.com/u/5097829?v=4"
-      },
-      {
-        "name": "VitorBraz",
-        "avatar": "https://avatars.githubusercontent.com/u/60633603?v=4"
       }
     ]
   },
@@ -348,23 +348,6 @@
     ]
   },
   {
-    "name": "123-AWS",
-    "members": [
-      {
-        "name": "matiasbreunig",
-        "avatar": "https://avatars.githubusercontent.com/u/5097829?v=4"
-      },
-      {
-        "name": "VitorBraz",
-        "avatar": "https://avatars.githubusercontent.com/u/60633603?v=4"
-      },
-      {
-        "name": "joberthtavares",
-        "avatar": "https://avatars.githubusercontent.com/u/233845689?v=4"
-      }
-    ]
-  },
-  {
     "name": "proj123zap-channels",
     "members": [
       {
@@ -462,46 +445,7 @@
     ]
   },
   {
-    "name": "MIL-VM150-123ZAP-DOCKER-01",
-    "members": [
-      {
-        "name": "matiasbreunig",
-        "avatar": "https://avatars.githubusercontent.com/u/5097829?v=4"
-      },
-      {
-        "name": "VitorBraz",
-        "avatar": "https://avatars.githubusercontent.com/u/60633603?v=4"
-      }
-    ]
-  },
-  {
     "name": "123zap-infra",
-    "members": [
-      {
-        "name": "matiasbreunig",
-        "avatar": "https://avatars.githubusercontent.com/u/5097829?v=4"
-      },
-      {
-        "name": "VitorBraz",
-        "avatar": "https://avatars.githubusercontent.com/u/60633603?v=4"
-      }
-    ]
-  },
-  {
-    "name": "123zap-heroui-test",
-    "members": [
-      {
-        "name": "matiasbreunig",
-        "avatar": "https://avatars.githubusercontent.com/u/5097829?v=4"
-      },
-      {
-        "name": "VitorBraz",
-        "avatar": "https://avatars.githubusercontent.com/u/60633603?v=4"
-      }
-    ]
-  },
-  {
-    "name": "heroui-amplify",
     "members": [
       {
         "name": "matiasbreunig",

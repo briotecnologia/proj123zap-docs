@@ -15,6 +15,14 @@
     "note": "Base de documentação organizacional"
   },
   {
+    "name": "argos",
+    "team": "Não definido",
+    "members": [],
+    "owners": [],
+    "status": "ativo",
+    "note": ""
+  },
+  {
     "name": "proj123zap-sites-clients",
     "team": "Web Sites",
     "members": [
@@ -54,7 +62,7 @@
     "note": ""
   },
   {
-    "name": "123zap-frontend",
+    "name": "proj123zap-frontend",
     "team": "Não definido",
     "members": [],
     "owners": [],
@@ -79,14 +87,6 @@
   },
   {
     "name": "proj123zap-core",
-    "team": "Não definido",
-    "members": [],
-    "owners": [],
-    "status": "ativo",
-    "note": ""
-  },
-  {
-    "name": "argos",
     "team": "Não definido",
     "members": [],
     "owners": [],
@@ -208,14 +208,6 @@
     "note": "Avaliar se mantém ou consolida"
   },
   {
-    "name": "123-AWS",
-    "team": "Não definido",
-    "members": [],
-    "owners": [],
-    "status": "ativo",
-    "note": ""
-  },
-  {
     "name": "proj123zap-channels",
     "team": "Não definido",
     "members": [],
@@ -256,40 +248,12 @@
     "note": ""
   },
   {
-    "name": "MIL-VM150-123ZAP-DOCKER-01",
-    "team": "Não definido",
-    "members": [],
-    "owners": [],
-    "status": "ativo",
-    "note": ""
-  },
-  {
     "name": "123zap-infra",
     "team": "Não definido",
     "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
-  },
-  {
-    "name": "123zap-heroui-test",
-    "team": "Frontend",
-    "members": [],
-    "owners": [
-      "Não definido"
-    ],
-    "status": "legado",
-    "note": "Projeto de teste sem continuidade recente"
-  },
-  {
-    "name": "heroui-amplify",
-    "team": "Frontend",
-    "members": [],
-    "owners": [
-      "Não definido"
-    ],
-    "status": "legado",
-    "note": "Experimento antigo"
   },
   {
     "name": "briotecnologia",
