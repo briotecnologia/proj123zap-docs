@@ -362,8 +362,8 @@
           <div class="value" id="m-public">0</div>
         </article>
         <article class="metric">
-          <div class="label">Em revisão</div>
-          <div class="value" id="m-review">0</div>
+          <div class="label">Com atenção (&gt; 90d)</div>
+          <div class="value" id="m-attention">0</div>
         </article>
       </div>
     </section>
@@ -377,13 +377,6 @@
             <option value="all">Tipo: todos</option>
             <option value="private">Tipo: privado</option>
             <option value="public">Tipo: público</option>
-          </select>
-          <select id="repoState" class="select">
-            <option value="all">Estado: todos</option>
-            <option value="ativo">Ativo</option>
-            <option value="revisao">Revisão</option>
-            <option value="legado">Legado</option>
-            <option value="desabilitado">Desabilitado</option>
           </select>
           <select id="prefix" class="select">
             <option value="all">Prefixo: todos</option>
@@ -406,17 +399,16 @@
               <tr>
                 <th>Repositório</th>
                 <th>Membros</th>
-                <th>Estado</th>
                 <th>Descrição</th>
                 <th>Tipo</th>
-                <th>Status técnico</th>
+                <th>Ponto de atenção</th>
                 <th>Último Push</th>
               </tr>
             </thead>
             <tbody id="repos-body"></tbody>
           </table>
         </div>
-        <p class="small-note">Os membros e estado vêm de <code>docs/data/repo-governance.json</code> (versionado por PR).</p>
+        <p class="small-note">Ponto de atenção é calculado automaticamente por data do último push.</p>
       </div>
     </section>
 
@@ -448,12 +440,11 @@
       return "other";
     };
 
-    const stateBadge = (state) => {
-      const val = (state || "ativo").toLowerCase();
-      if (val === "revisao") return '<span class="badge review">revisão</span>';
-      if (val === "legado") return '<span class="badge legacy">legado</span>';
-      if (val === "desabilitado") return '<span class="badge warn">desabilitado</span>';
-      return '<span class="badge ok">ativo</span>';
+    const attentionBadge = (repo, age) => {
+      if (repo.isArchived) return '<span class="badge warn">arquivado</span>';
+      if (age > 180) return '<span class="badge legacy">crítico (&gt; 180d)</span>';
+      if (age > 90) return '<span class="badge warn">atenção (&gt; 90d)</span>';
+      return '<span class="badge ok">ok</span>';
     };
 
     const initials = (name) => {
@@ -481,7 +472,6 @@
     const reposBody = document.getElementById("repos-body");
     const q = document.getElementById("q");
     const type = document.getElementById("type");
-    const repoState = document.getElementById("repoState");
     const prefix = document.getElementById("prefix");
     const fresh = document.getElementById("fresh");
 
@@ -491,12 +481,11 @@
       const term = q.value.trim().toLowerCase();
       const filtered = data
         .filter((r) => {
-          const text = `${r.name} ${r.description || ""} ${(r.members || []).map((m) => m.name || "").join(" ")} ${(r.status || "")}`.toLowerCase();
+          const text = `${r.name} ${r.description || ""} ${(r.members || []).map((m) => m.name || "").join(" ")}`.toLowerCase();
           if (term && !text.includes(term)) return false;
 
           if (type.value === "private" && !r.isPrivate) return false;
           if (type.value === "public" && r.isPrivate) return false;
-          if (repoState.value !== "all" && (r.status || "ativo") !== repoState.value) return false;
 
           const b = bucket(r.name);
           if (prefix.value !== "all" && prefix.value !== b) return false;
@@ -512,11 +501,7 @@
       reposBody.innerHTML = filtered
         .map((r) => {
           const age = daysSince(r.pushedAt);
-          const statusTech = r.isArchived
-            ? '<span class="badge warn">arquivado</span>'
-            : age > 180
-              ? '<span class="badge warn">possível sem sequência</span>'
-              : '<span class="badge ok">ativo</span>';
+          const attention = attentionBadge(r, age);
 
           const kind = r.isPrivate
             ? '<span class="badge">privado</span>'
@@ -526,10 +511,9 @@
             <tr>
               <td><a class="repo-link" href="${r.url}" target="_blank" rel="noreferrer">${r.name}</a></td>
               <td>${renderMembers(r.members || [])}</td>
-              <td>${stateBadge(r.status)}</td>
               <td>${r.description ? r.description : '<span class="muted">sem descrição</span>'}</td>
               <td>${kind}</td>
-              <td>${statusTech}</td>
+              <td>${attention}</td>
               <td title="${r.pushedAt}">${fmtDate(r.pushedAt)} <span class="muted">(${age}d)</span></td>
             </tr>
           `;
@@ -541,12 +525,15 @@
       const total = data.length;
       const privateCount = data.filter((r) => r.isPrivate).length;
       const publicCount = data.filter((r) => !r.isPrivate).length;
-      const reviewCount = data.filter((r) => (r.status || "ativo") === "revisao").length;
+      const attentionCount = data.filter((r) => {
+        const age = daysSince(r.pushedAt);
+        return r.isArchived || age > 90;
+      }).length;
 
       document.getElementById("m-total").textContent = total;
       document.getElementById("m-private").textContent = privateCount;
       document.getElementById("m-public").textContent = publicCount;
-      document.getElementById("m-review").textContent = reviewCount;
+      document.getElementById("m-attention").textContent = attentionCount;
     };
 
     Promise.all([
@@ -564,7 +551,6 @@
         return {
           ...repo,
           members: fromGov.length ? fromGov : fromCollab,
-          status: g.status || "ativo",
         };
       });
 
@@ -579,7 +565,7 @@
       renderRepos();
     });
 
-    [q, type, repoState, prefix, fresh].forEach((el) => el.addEventListener("input", renderRepos));
+    [q, type, prefix, fresh].forEach((el) => el.addEventListener("input", renderRepos));
   </script>
 </body>
 </html>
