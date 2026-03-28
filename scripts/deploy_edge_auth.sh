@@ -54,12 +54,14 @@ ROLE_ARN=$(aws iam get-role --role-name "$ROLE_NAME" --query 'Role.Arn' --output
 
 echo "[2/6] Packaging function..."
 cd "$WORKDIR/infra/lambda-edge-auth"
-zip -q -r "$ZIP_PATH" index.js
+rm -f package-lock.json
+npm install --omit=dev >/dev/null
+zip -q -r "$ZIP_PATH" index.js package.json node_modules
 
 echo "[3/6] Creating/updating lambda in us-east-1..."
 if aws lambda get-function --function-name "$FUNCTION_NAME" --region us-east-1 >/dev/null 2>&1; then
   aws lambda update-function-code --function-name "$FUNCTION_NAME" --zip-file "fileb://$ZIP_PATH" --region us-east-1 >/dev/null
-  aws lambda update-function-configuration --function-name "$FUNCTION_NAME" --runtime "$RUNTIME" --handler "$HANDLER" --role "$ROLE_ARN" --timeout 5 --memory-size 256 --region us-east-1 >/dev/null
+  aws lambda wait function-updated-v2 --function-name "$FUNCTION_NAME" --region us-east-1
   echo "Lambda updated: $FUNCTION_NAME"
 else
   aws lambda create-function \
