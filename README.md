@@ -9,6 +9,7 @@ Clique aqui para acessar nossa documentação:
 - `docs/index.html` -> página visual da documentação
 - `docs/data/repos.json` -> inventário de repositórios da organização
 - `docs/data/repo-governance.json` -> equipe, responsáveis e estado (`ativo`, `revisao`, `legado`, `desabilitado`)
+- `docs/data/repo-collaborators.json` -> snapshot de colaboradores por repo (login + avatar)
 - `scripts/update_repos_data.sh` -> atualiza o inventário via GitHub API
 
 ## Atualizar inventário

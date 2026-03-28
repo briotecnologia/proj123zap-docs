@@ -280,12 +280,10 @@
     .member {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 3px 7px 3px 3px;
+      padding: 3px;
       background: #14213a;
-      max-width: 210px;
     }
 
     .avatar {
@@ -309,15 +307,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    .member-name {
-      font-size: 0.76rem;
-      color: #dbe9ff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 165px;
     }
 
     .footer {
@@ -485,7 +474,7 @@
       return `<div class="members">${members.map((m) => {
         const name = m.name || "Sem nome";
         const avatar = m.avatar || "";
-        return `<span class="member"><span class="avatar">${avatar ? `<img alt="${name}" src="${avatar}" />` : initials(name)}</span><span class="member-name" title="${name}">${name}</span></span>`;
+        return `<span class="member" title="${name}"><span class="avatar">${avatar ? `<img alt="${name}" src="${avatar}" />` : initials(name)}</span></span>`;
       }).join("")}</div>`;
     };
 
@@ -563,14 +552,18 @@
     Promise.all([
       fetch("./data/repos.json").then((r) => r.json()),
       fetch("./data/repo-governance.json").then((r) => r.json()).catch(() => []),
-    ]).then(([repos, gov]) => {
+      fetch("./data/repo-collaborators.json").then((r) => r.json()).catch(() => []),
+    ]).then(([repos, gov, collab]) => {
       const govMap = new Map(gov.map((x) => [x.name, x]));
+      const collabMap = new Map(collab.map((x) => [x.name, Array.isArray(x.members) ? x.members : []]));
 
       data = repos.map((repo) => {
         const g = govMap.get(repo.name) || {};
+        const fromGov = normalizeMembers(g);
+        const fromCollab = collabMap.get(repo.name) || [];
         return {
           ...repo,
-          members: normalizeMembers(g),
+          members: fromGov.length ? fromGov : fromCollab,
           status: g.status || "ativo",
         };
       });
