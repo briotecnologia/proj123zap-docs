@@ -169,12 +169,6 @@
       gap: 10px;
     }
 
-    .controls-4 {
-      display: grid;
-      grid-template-columns: 1.3fr repeat(4, minmax(130px, 1fr));
-      gap: 10px;
-    }
-
     .input,
     .select {
       width: 100%;
@@ -276,6 +270,56 @@
       color: var(--muted);
     }
 
+    .members {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-width: 220px;
+    }
+
+    .member {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 7px 3px 3px;
+      background: #14213a;
+      max-width: 210px;
+    }
+
+    .avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #2a3e63;
+      color: #d7e8ff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      border: 1px solid #38507a;
+      overflow: hidden;
+      flex: 0 0 22px;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .member-name {
+      font-size: 0.76rem;
+      color: #dbe9ff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 165px;
+    }
+
     .footer {
       border-top: 1px solid var(--line);
       color: #7e94b7;
@@ -285,7 +329,7 @@
     }
 
     @media (max-width: 980px) {
-      .controls, .controls-4 { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -309,7 +353,6 @@
     <div class="topnav-inner">
       <a href="#visao-geral">Visão Geral</a>
       <a href="#repositorios">Repositórios</a>
-      <a href="#equipes">Equipes & Responsáveis</a>
     </div>
   </nav>
 
@@ -346,6 +389,13 @@
             <option value="private">Tipo: privado</option>
             <option value="public">Tipo: público</option>
           </select>
+          <select id="repoState" class="select">
+            <option value="all">Estado: todos</option>
+            <option value="ativo">Ativo</option>
+            <option value="revisao">Revisão</option>
+            <option value="legado">Legado</option>
+            <option value="desabilitado">Desabilitado</option>
+          </select>
           <select id="prefix" class="select">
             <option value="all">Prefixo: todos</option>
             <option value="proj123zap">proj123zap</option>
@@ -366,6 +416,8 @@
             <thead>
               <tr>
                 <th>Repositório</th>
+                <th>Membros</th>
+                <th>Estado</th>
                 <th>Descrição</th>
                 <th>Tipo</th>
                 <th>Status técnico</th>
@@ -375,51 +427,7 @@
             <tbody id="repos-body"></tbody>
           </table>
         </div>
-      </div>
-    </section>
-
-    <section id="equipes">
-      <h2 class="section-title">Equipes, Responsáveis e Estado</h2>
-      <p class="section-desc">Esta tabela é controlada pelo arquivo versionado <code>docs/data/repo-governance.json</code>. O time pode editar por PR.</p>
-      <div class="panel">
-        <div class="controls-4">
-          <input id="gq" class="input" placeholder="Buscar por repositório, equipe ou responsável" />
-          <select id="gstatus" class="select">
-            <option value="all">Estado: todos</option>
-            <option value="ativo">Ativo</option>
-            <option value="revisao">Revisão</option>
-            <option value="legado">Legado</option>
-            <option value="desabilitado">Desabilitado</option>
-          </select>
-          <select id="gteam" class="select">
-            <option value="all">Equipe: todas</option>
-          </select>
-          <select id="gowner" class="select">
-            <option value="all">Responsável: todos</option>
-          </select>
-          <select id="gtype" class="select">
-            <option value="all">Tipo: todos</option>
-            <option value="private">Privado</option>
-            <option value="public">Público</option>
-          </select>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Repositório</th>
-                <th>Equipe</th>
-                <th>Responsável</th>
-                <th>Estado</th>
-                <th>Observação</th>
-              </tr>
-            </thead>
-            <tbody id="gov-body"></tbody>
-          </table>
-        </div>
-
-        <p class="small-note">Fluxo recomendado: alterar <code>docs/data/repo-governance.json</code> e abrir PR. Assim o histórico de mudanças fica auditável.</p>
+        <p class="small-note">Os membros e estado vêm de <code>docs/data/repo-governance.json</code> (versionado por PR).</p>
       </div>
     </section>
 
@@ -459,19 +467,34 @@
       return '<span class="badge ok">ativo</span>';
     };
 
-    const reposBody = document.getElementById("repos-body");
-    const govBody = document.getElementById("gov-body");
+    const initials = (name) => {
+      const words = (name || "").trim().split(/\s+/).filter(Boolean);
+      if (!words.length) return "?";
+      if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+      return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+    };
 
+    const normalizeMembers = (entry) => {
+      if (Array.isArray(entry.members) && entry.members.length) return entry.members;
+      if (Array.isArray(entry.owners)) return entry.owners.map((n) => ({ name: n }));
+      return [];
+    };
+
+    const renderMembers = (members) => {
+      if (!members.length) return '<span class="muted">Não definido</span>';
+      return `<div class="members">${members.map((m) => {
+        const name = m.name || "Sem nome";
+        const avatar = m.avatar || "";
+        return `<span class="member"><span class="avatar">${avatar ? `<img alt="${name}" src="${avatar}" />` : initials(name)}</span><span class="member-name" title="${name}">${name}</span></span>`;
+      }).join("")}</div>`;
+    };
+
+    const reposBody = document.getElementById("repos-body");
     const q = document.getElementById("q");
     const type = document.getElementById("type");
+    const repoState = document.getElementById("repoState");
     const prefix = document.getElementById("prefix");
     const fresh = document.getElementById("fresh");
-
-    const gq = document.getElementById("gq");
-    const gstatus = document.getElementById("gstatus");
-    const gteam = document.getElementById("gteam");
-    const gowner = document.getElementById("gowner");
-    const gtype = document.getElementById("gtype");
 
     let data = [];
 
@@ -479,11 +502,12 @@
       const term = q.value.trim().toLowerCase();
       const filtered = data
         .filter((r) => {
-          const text = `${r.name} ${r.description || ""}`.toLowerCase();
+          const text = `${r.name} ${r.description || ""} ${(r.members || []).map((m) => m.name || "").join(" ")} ${(r.status || "")}`.toLowerCase();
           if (term && !text.includes(term)) return false;
 
           if (type.value === "private" && !r.isPrivate) return false;
           if (type.value === "public" && r.isPrivate) return false;
+          if (repoState.value !== "all" && (r.status || "ativo") !== repoState.value) return false;
 
           const b = bucket(r.name);
           if (prefix.value !== "all" && prefix.value !== b) return false;
@@ -512,6 +536,8 @@
           return `
             <tr>
               <td><a class="repo-link" href="${r.url}" target="_blank" rel="noreferrer">${r.name}</a></td>
+              <td>${renderMembers(r.members || [])}</td>
+              <td>${stateBadge(r.status)}</td>
               <td>${r.description ? r.description : '<span class="muted">sem descrição</span>'}</td>
               <td>${kind}</td>
               <td>${statusTech}</td>
@@ -519,35 +545,6 @@
             </tr>
           `;
         })
-        .join("");
-    };
-
-    const renderGovernance = () => {
-      const term = gq.value.trim().toLowerCase();
-
-      const rows = data
-        .filter((r) => {
-          const text = `${r.name} ${r.team || ""} ${(r.owners || []).join(" ")} ${r.status || ""} ${r.note || ""}`.toLowerCase();
-          if (term && !text.includes(term)) return false;
-          if (gstatus.value !== "all" && (r.status || "ativo") !== gstatus.value) return false;
-          if (gteam.value !== "all" && (r.team || "Não definido") !== gteam.value) return false;
-          if (gowner.value !== "all" && !(r.owners || []).includes(gowner.value)) return false;
-          if (gtype.value === "private" && !r.isPrivate) return false;
-          if (gtype.value === "public" && r.isPrivate) return false;
-          return true;
-        })
-        .sort((a, b) => a.name.localeCompare(b.name));
-
-      govBody.innerHTML = rows
-        .map((r) => `
-          <tr>
-            <td><a class="repo-link" href="${r.url}" target="_blank" rel="noreferrer">${r.name}</a></td>
-            <td>${r.team || '<span class="muted">Não definido</span>'}</td>
-            <td>${(r.owners && r.owners.length) ? r.owners.join(", ") : '<span class="muted">Não definido</span>'}</td>
-            <td>${stateBadge(r.status)}</td>
-            <td>${r.note ? r.note : '<span class="muted">-</span>'}</td>
-          </tr>
-        `)
         .join("");
     };
 
@@ -563,19 +560,6 @@
       document.getElementById("m-review").textContent = reviewCount;
     };
 
-    const fillGovernanceFilters = () => {
-      const teams = [...new Set(data.map((r) => r.team || "Não definido"))].sort();
-      const owners = [...new Set(data.flatMap((r) => r.owners || []))].sort();
-
-      gteam.innerHTML = ['<option value="all">Equipe: todas</option>']
-        .concat(teams.map((t) => `<option value="${t}">${t}</option>`))
-        .join("");
-
-      gowner.innerHTML = ['<option value="all">Responsável: todos</option>']
-        .concat(owners.map((o) => `<option value="${o}">${o}</option>`))
-        .join("");
-    };
-
     Promise.all([
       fetch("./data/repos.json").then((r) => r.json()),
       fetch("./data/repo-governance.json").then((r) => r.json()).catch(() => []),
@@ -586,10 +570,8 @@
         const g = govMap.get(repo.name) || {};
         return {
           ...repo,
-          team: g.team || "Não definido",
-          owners: Array.isArray(g.owners) ? g.owners : [],
+          members: normalizeMembers(g),
           status: g.status || "ativo",
-          note: g.note || "",
         };
       });
 
@@ -601,13 +583,10 @@
       document.getElementById("snapshot-date").textContent = latest ? fmtDate(latest) : "-";
 
       updateMetrics();
-      fillGovernanceFilters();
       renderRepos();
-      renderGovernance();
     });
 
-    [q, type, prefix, fresh].forEach((el) => el.addEventListener("input", renderRepos));
-    [gq, gstatus, gteam, gowner, gtype].forEach((el) => el.addEventListener("input", renderGovernance));
+    [q, type, repoState, prefix, fresh].forEach((el) => el.addEventListener("input", renderRepos));
   </script>
 </body>
 </html>

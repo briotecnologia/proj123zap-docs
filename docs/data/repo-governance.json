@@ -2,6 +2,12 @@
   {
     "name": "proj123zap-docs",
     "team": "Plataforma",
+    "members": [
+      {
+        "name": "Vitor Braz",
+        "avatar": "https://avatars.githubusercontent.com/u/60633603?v=4"
+      }
+    ],
     "owners": [
       "Vitor Braz"
     ],
@@ -11,6 +17,12 @@
   {
     "name": "proj123zap-sites-clients",
     "team": "Web Sites",
+    "members": [
+      {
+        "name": "Vitor Braz",
+        "avatar": "https://avatars.githubusercontent.com/u/60633603?v=4"
+      }
+    ],
     "owners": [
       "Vitor Braz"
     ],
@@ -20,6 +32,7 @@
   {
     "name": "proj123zap-campaign-create",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -27,6 +40,7 @@
   {
     "name": "proj123zap-integration-events",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -34,6 +48,7 @@
   {
     "name": "proj123zap-listings-orchestrator",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -41,6 +56,7 @@
   {
     "name": "123zap-frontend",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -48,6 +64,7 @@
   {
     "name": "123zap-list-providers",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -55,6 +72,7 @@
   {
     "name": "proj123zap-templates",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -62,6 +80,7 @@
   {
     "name": "proj123zap-core",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -69,6 +88,7 @@
   {
     "name": "argos",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -76,6 +96,7 @@
   {
     "name": "helena-integration-hub",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -83,6 +104,7 @@
   {
     "name": "123zap-connector-mk",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -90,6 +112,7 @@
   {
     "name": "123zap_ispintegrator",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -97,6 +120,7 @@
   {
     "name": "cf-start-subscription",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -104,6 +128,7 @@
   {
     "name": "123zap-infra-ia",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -111,6 +136,7 @@
   {
     "name": "outline-brio",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -118,6 +144,7 @@
   {
     "name": "aws-nuage-migration",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -125,6 +152,7 @@
   {
     "name": "bookstack-swarm",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -132,6 +160,7 @@
   {
     "name": "123Desk-painel",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -139,6 +168,7 @@
   {
     "name": "proj123zap-erp-atlas",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -146,6 +176,7 @@
   {
     "name": "aws-nuage",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -153,6 +184,7 @@
   {
     "name": "123zap-connector-ixc",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -160,6 +192,7 @@
   {
     "name": "MIL-VM150-123ZAP-TRAEFIK",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -167,6 +200,7 @@
   {
     "name": "heroui-aws",
     "team": "Frontend",
+    "members": [],
     "owners": [
       "Não definido"
     ],
@@ -176,6 +210,7 @@
   {
     "name": "123-AWS",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -183,6 +218,7 @@
   {
     "name": "proj123zap-channels",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -190,6 +226,7 @@
   {
     "name": "proj123zap-login",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -197,6 +234,7 @@
   {
     "name": "proj123zap-profiles",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -204,6 +242,7 @@
   {
     "name": "proj123zap-infra-interface",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -211,6 +250,7 @@
   {
     "name": "proj123zap-dashboard",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -218,6 +258,7 @@
   {
     "name": "MIL-VM150-123ZAP-DOCKER-01",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -225,6 +266,7 @@
   {
     "name": "123zap-infra",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""
@@ -232,6 +274,7 @@
   {
     "name": "123zap-heroui-test",
     "team": "Frontend",
+    "members": [],
     "owners": [
       "Não definido"
     ],
@@ -241,6 +284,7 @@
   {
     "name": "heroui-amplify",
     "team": "Frontend",
+    "members": [],
     "owners": [
       "Não definido"
     ],
@@ -250,6 +294,7 @@
   {
     "name": "briotecnologia",
     "team": "Não definido",
+    "members": [],
     "owners": [],
     "status": "ativo",
     "note": ""

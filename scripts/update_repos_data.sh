@@ -21,6 +21,7 @@ jq -s '
   def gov_defaults($name): {
     name: $name,
     team: "Não definido",
+    members: [],
     owners: [],
     status: "ativo",
     note: ""
@@ -37,6 +38,7 @@ jq -s '
     | {
         name: .name,
         team: (.team // "Não definido"),
+        members: (if (.members | type) == "array" then .members else [] end),
         owners: (if (.owners | type) == "array" then .owners else [] end),
         status: (.status // "ativo"),
         note: (.note // "")

@@ -21,6 +21,7 @@ Clique aqui para acessar nossa documentação:
 
 - Edite `docs/data/repo-governance.json` para definir:
   - `team`
+  - `members` (ex.: `[{ "name": "Pessoa", "avatar": "https://..." }]`)
   - `owners`
   - `status`: `ativo`, `revisao`, `legado`, `desabilitado`
   - `note`
