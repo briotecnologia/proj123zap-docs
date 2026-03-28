@@ -1,7 +1,7 @@
 # proj123zap-docs
 
 Documentação interna de repositórios da organização.
-Deploy recomendado: **Cloudflare Worker + Cloudflare Access (IdP Cognito)**.
+Deploy recomendado: **AWS S3 + CloudFront** com publicação automática via GitHub Actions.
 
 ## Estrutura
 
@@ -9,9 +9,8 @@ Deploy recomendado: **Cloudflare Worker + Cloudflare Access (IdP Cognito)**.
 - `docs/data/repos.json` -> inventário de repositórios da organização
 - `docs/data/repo-governance.json` -> equipe, responsáveis e estado (`ativo`, `revisao`, `legado`, `desabilitado`)
 - `docs/data/repo-collaborators.json` -> snapshot de colaboradores por repo (login + avatar)
-- `src/worker.js` -> worker que serve os assets de `docs/`
-- `wrangler.jsonc` -> configuração de deploy no Cloudflare Workers
 - `scripts/update_repos_data.sh` -> atualiza o inventário via GitHub API
+- `.github/workflows/deploy-cloudfront.yml` -> deploy automático em S3 + invalidação CloudFront
 
 ## Atualizar inventário
 
@@ -19,21 +18,21 @@ Deploy recomendado: **Cloudflare Worker + Cloudflare Access (IdP Cognito)**.
 ./scripts/update_repos_data.sh
 ```
 
-## Deploy interno com Cognito
+## Deploy automático no CloudFront
 
-1. Deploy do worker:
+Configure no repositório do GitHub:
 
-```bash
-npx wrangler deploy
-```
+### Repository Variables
 
-2. No Cloudflare Zero Trust (Access):
-- Application type: Self-hosted
-- Domain: domínio interno da docs
-- Identity provider: Cognito (o já existente para projetos internos)
-- Policy: permitir somente grupos/usuários internos
+- `AWS_REGION`
+- `DOCS_S3_BUCKET`
+- `CLOUDFRONT_DISTRIBUTION_ID`
 
-Com isso, o acesso fica protegido por login Cognito, sem senha básica no app.
+### Repository Secret
+
+- `AWS_ROLE_TO_ASSUME` (ARN da role IAM com trust para OIDC do GitHub)
+
+O workflow `Deploy Docs to CloudFront` publica o conteúdo de `docs/` no S3 e invalida o CloudFront a cada push no `master`.
 
 ## Governança
 
