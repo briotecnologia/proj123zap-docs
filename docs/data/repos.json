@@ -1,0 +1,317 @@
+[
+  {
+    "name": "proj123zap-docs",
+    "url": "https://github.com/briotecnologia/proj123zap-docs",
+    "pushedAt": "2026-03-28T17:20:35Z",
+    "updatedAt": "2026-03-28T17:20:39Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": false
+  },
+  {
+    "name": "proj123zap-sites-clients",
+    "url": "https://github.com/briotecnologia/proj123zap-sites-clients",
+    "pushedAt": "2026-03-28T17:02:55Z",
+    "updatedAt": "2026-03-28T17:02:58Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-campaign-create",
+    "url": "https://github.com/briotecnologia/proj123zap-campaign-create",
+    "pushedAt": "2026-03-28T13:56:01Z",
+    "updatedAt": "2026-03-28T13:56:04Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-integration-events",
+    "url": "https://github.com/briotecnologia/proj123zap-integration-events",
+    "pushedAt": "2026-03-28T13:42:29Z",
+    "updatedAt": "2026-03-28T13:42:32Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-listings-orchestrator",
+    "url": "https://github.com/briotecnologia/proj123zap-listings-orchestrator",
+    "pushedAt": "2026-03-28T05:49:21Z",
+    "updatedAt": "2026-03-27T21:19:12Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123zap-frontend",
+    "url": "https://github.com/briotecnologia/123zap-frontend",
+    "pushedAt": "2026-03-27T22:01:26Z",
+    "updatedAt": "2026-03-27T22:01:31Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123zap-list-providers",
+    "url": "https://github.com/briotecnologia/123zap-list-providers",
+    "pushedAt": "2026-03-27T20:39:54Z",
+    "updatedAt": "2026-03-09T15:04:35Z",
+    "description": "Conector Elleven para 123Zap",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-templates",
+    "url": "https://github.com/briotecnologia/proj123zap-templates",
+    "pushedAt": "2026-03-27T03:27:05Z",
+    "updatedAt": "2026-03-26T00:36:26Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-core",
+    "url": "https://github.com/briotecnologia/proj123zap-core",
+    "pushedAt": "2026-03-26T21:39:59Z",
+    "updatedAt": "2026-02-25T04:17:50Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "argos",
+    "url": "https://github.com/briotecnologia/argos",
+    "pushedAt": "2026-03-26T17:38:00Z",
+    "updatedAt": "2026-03-26T17:38:03Z",
+    "description": "123Zap BI+IA — Monorepo de MCPs e infraestruturas para conectar sistemas da 123Zap ao Claude e Codex",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "helena-integration-hub",
+    "url": "https://github.com/briotecnologia/helena-integration-hub",
+    "pushedAt": "2026-03-25T21:04:19Z",
+    "updatedAt": "2026-03-25T21:04:22Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123zap-connector-mk",
+    "url": "https://github.com/briotecnologia/123zap-connector-mk",
+    "pushedAt": "2026-03-23T19:12:00Z",
+    "updatedAt": "2026-03-23T19:12:04Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123zap_ispintegrator",
+    "url": "https://github.com/briotecnologia/123zap_ispintegrator",
+    "pushedAt": "2026-03-23T09:16:40Z",
+    "updatedAt": "2026-03-23T09:16:44Z",
+    "description": "Lambda de sync de dataset para ISP Integrator - 123Zap",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "cf-start-subscription",
+    "url": "https://github.com/briotecnologia/cf-start-subscription",
+    "pushedAt": "2026-03-22T02:30:39Z",
+    "updatedAt": "2026-03-10T16:35:40Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123zap-infra-ia",
+    "url": "https://github.com/briotecnologia/123zap-infra-ia",
+    "pushedAt": "2026-03-20T19:02:44Z",
+    "updatedAt": "2026-03-20T19:02:49Z",
+    "description": "Operacao de infraestrutura 123Zap via Claude Code — AWS, Linux, Docker",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "outline-brio",
+    "url": "https://github.com/briotecnologia/outline-brio",
+    "pushedAt": "2026-03-20T18:46:41Z",
+    "updatedAt": "2026-03-20T14:49:25Z",
+    "description": "The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible.",
+    "isArchived": false,
+    "isPrivate": false
+  },
+  {
+    "name": "aws-nuage-migration",
+    "url": "https://github.com/briotecnologia/aws-nuage-migration",
+    "pushedAt": "2026-03-19T22:32:53Z",
+    "updatedAt": "2026-03-19T22:32:57Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "bookstack-swarm",
+    "url": "https://github.com/briotecnologia/bookstack-swarm",
+    "pushedAt": "2026-03-17T19:22:26Z",
+    "updatedAt": "2026-03-17T19:22:31Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123Desk-painel",
+    "url": "https://github.com/briotecnologia/123Desk-painel",
+    "pushedAt": "2026-03-13T19:42:53Z",
+    "updatedAt": "2026-03-13T19:42:57Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-erp-atlas",
+    "url": "https://github.com/briotecnologia/proj123zap-erp-atlas",
+    "pushedAt": "2026-03-09T04:58:59Z",
+    "updatedAt": "2026-03-09T04:59:02Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "aws-nuage",
+    "url": "https://github.com/briotecnologia/aws-nuage",
+    "pushedAt": "2026-03-04T13:56:05Z",
+    "updatedAt": "2026-03-04T13:56:11Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123zap-connector-ixc",
+    "url": "https://github.com/briotecnologia/123zap-connector-ixc",
+    "pushedAt": "2026-03-02T08:41:58Z",
+    "updatedAt": "2026-03-02T08:42:02Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "MIL-VM150-123ZAP-TRAEFIK",
+    "url": "https://github.com/briotecnologia/MIL-VM150-123ZAP-TRAEFIK",
+    "pushedAt": "2026-02-25T00:59:19Z",
+    "updatedAt": "2026-02-25T00:59:23Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "heroui-aws",
+    "url": "https://github.com/briotecnologia/heroui-aws",
+    "pushedAt": "2026-02-11T10:26:38Z",
+    "updatedAt": "2026-02-11T10:26:27Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123-AWS",
+    "url": "https://github.com/briotecnologia/123-AWS",
+    "pushedAt": "2026-02-05T04:30:12Z",
+    "updatedAt": "2025-10-06T11:47:47Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-channels",
+    "url": "https://github.com/briotecnologia/proj123zap-channels",
+    "pushedAt": "2026-01-08T19:58:00Z",
+    "updatedAt": "2026-01-08T19:58:04Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-login",
+    "url": "https://github.com/briotecnologia/proj123zap-login",
+    "pushedAt": "2025-12-31T12:52:24Z",
+    "updatedAt": "2025-10-31T03:39:59Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-profiles",
+    "url": "https://github.com/briotecnologia/proj123zap-profiles",
+    "pushedAt": "2025-11-06T10:59:17Z",
+    "updatedAt": "2025-11-06T10:56:24Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-infra-interface",
+    "url": "https://github.com/briotecnologia/proj123zap-infra-interface",
+    "pushedAt": "2025-10-31T05:06:34Z",
+    "updatedAt": "2025-11-05T18:28:38Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "proj123zap-dashboard",
+    "url": "https://github.com/briotecnologia/proj123zap-dashboard",
+    "pushedAt": "2025-10-16T18:22:44Z",
+    "updatedAt": "2025-10-16T18:22:47Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "MIL-VM150-123ZAP-DOCKER-01",
+    "url": "https://github.com/briotecnologia/MIL-VM150-123ZAP-DOCKER-01",
+    "pushedAt": "2025-08-22T22:20:49Z",
+    "updatedAt": "2025-08-22T22:20:52Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123zap-infra",
+    "url": "https://github.com/briotecnologia/123zap-infra",
+    "pushedAt": "2025-06-27T12:01:16Z",
+    "updatedAt": "2025-06-27T12:01:20Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "123zap-heroui-test",
+    "url": "https://github.com/briotecnologia/123zap-heroui-test",
+    "pushedAt": "2025-05-20T13:00:48Z",
+    "updatedAt": "2025-05-20T13:00:51Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "heroui-amplify",
+    "url": "https://github.com/briotecnologia/heroui-amplify",
+    "pushedAt": "2025-05-17T23:36:37Z",
+    "updatedAt": "2025-05-17T23:36:40Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": true
+  },
+  {
+    "name": "briotecnologia",
+    "url": "https://github.com/briotecnologia/briotecnologia",
+    "pushedAt": "2025-04-16T16:55:33Z",
+    "updatedAt": "2025-04-16T16:55:36Z",
+    "description": "",
+    "isArchived": false,
+    "isPrivate": false
+  }
+]

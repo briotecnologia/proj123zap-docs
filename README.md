@@ -6,5 +6,12 @@ Clique aqui para acessar nossa documentação:
 
 ## Estrutura
 
-- `docs/` -> site da documentação publicado via GitHub Pages
+- `docs/index.html` -> página visual da documentação
+- `docs/data/repos.json` -> inventário de repositórios da organização
+- `scripts/update_repos_data.sh` -> atualiza o inventário via GitHub API
 
+## Atualizar inventário
+
+```bash
+./scripts/update_repos_data.sh
+```
