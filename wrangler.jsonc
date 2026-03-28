@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "proj123zap-docs-internal",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-03-28",
+  "assets": {
+    "directory": "./docs",
+    "binding": "ASSETS"
+  }
+}
